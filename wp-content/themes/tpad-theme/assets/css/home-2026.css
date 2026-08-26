@@ -1,0 +1,205 @@
+/* =========================================================================
+   HOME 2026 — Homepage rebuild, regal editorial.
+   Owns: the sec/tone wrapper system, the 4 section-header variants, and
+   every per-section block class in the CSS/markup contract. Loads after
+   tokens.css, components.css and refresh-2026.css.
+
+   DOM assumptions this file makes (for the template pass):
+   - .why__pullstat is a child of .why__figure (absolute-positioned overlap).
+   - .compare-table value <td>s carry data-label="{Column header}" (mobile
+     stacked view prints it; base fallback in components.css).
+   - Each .type wraps its kicker/title/body/list/cta in one .type__content
+     child, sitting next to the auto-numbered .type::before "ghost numeral".
+   ========================================================================= */
+
+/* ---- Wrapper / tone rhythm --------------------------------------------- */
+.tone--paper{background:var(--c-bg)}
+.tone--cream{background:var(--c-bg-2)}
+.tone--dark{background:var(--grad-burgundy)}
+.tone--dark,.tone--image{color:var(--c-text-inv)}
+.tone--dark h1,.tone--dark h2,.tone--dark h3,.tone--dark h4,
+.tone--image h1,.tone--image h2,.tone--image h3,.tone--image h4{color:var(--c-text-inv)}
+.tone--dark p,.tone--image p{color:var(--c-text-inv)}
+.tone--dark .sec__sub,.tone--image .sec__sub{color:var(--c-text-inv);opacity:.85}
+.tone--image{position:relative;overflow:hidden;isolation:isolate}
+.tone--image::before{content:"";position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.tone--image::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,var(--c-overlay-1) 0%,var(--c-overlay-2) 55%,var(--c-overlay-3) 100%)}
+
+/* ---- Section header variants ------------------------------------------- */
+.sec__head--centered{text-align:center;max-width:720px;margin:0 auto var(--sp-12)}
+.sec__head--centered h2{position:relative;padding-bottom:var(--sp-5);margin-bottom:var(--sp-4)}
+.sec__head--centered h2::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:64px;border-bottom:var(--rule-gold)}
+
+.sec__head--split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-10);align-items:end;margin-bottom:var(--sp-12)}
+.sec__head--split h2{margin:0}
+.sec__head--split .sec__sub{margin:0;max-width:none;font-size:var(--fs-md);line-height:var(--lh-relaxed);color:var(--c-text-mid)}
+@media(max-width:900px){.sec__head--split{grid-template-columns:1fr;gap:var(--sp-4)}}
+
+.sec__head--inverted{margin-bottom:var(--sp-10)}
+.sec__head--inverted .sec__eyebrow{background:var(--c-scrim-inv);color:var(--c-accent-light);border-color:var(--c-gold-line)}
+.sec__head--inverted h2{color:var(--c-text-inv)}
+
+.sec__head--rule{display:flex;align-items:baseline;gap:var(--sp-6);margin-bottom:var(--sp-12)}
+.sec__head--rule .sec__head-num{font-family:var(--ff-heading);font-style:italic;font-size:var(--fs-4xl);color:var(--c-accent);flex-shrink:0;line-height:1}
+.sec__head--rule h2{white-space:nowrap;margin:0}
+.sec__head--rule::after{content:"";flex:1;align-self:center;border-top:var(--rule-gold)}
+@media(max-width:600px){.sec__head--rule h2{white-space:normal}}
+
+/* ---- Section 1: Hero (image tone) -------------------------------------- */
+.hero.hero--trust{background:none;position:relative;overflow:hidden;isolation:isolate}
+.hero.hero--trust::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--img-hero);background-size:cover;background-position:center}
+.hero.hero--trust::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 30% 32%,var(--c-gold-glow),transparent 55%),linear-gradient(160deg,var(--c-overlay-1) 0%,var(--c-overlay-2) 55%,var(--c-overlay-3) 100%)}
+.hero.hero--trust h1 em{font-style:italic;color:var(--c-accent-light);text-decoration:none}
+.hero__stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:var(--sp-10);padding-top:var(--sp-8);border-top:var(--rule-gold)}
+.hero__stat{text-align:center;position:relative}
+.hero__stat+.hero__stat::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--c-gold-line)}
+.hero__stat-val{display:block;font-family:var(--ff-heading);font-size:var(--fs-3xl);color:var(--c-accent-light);line-height:1;margin-bottom:var(--sp-2)}
+.hero__stat-label{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--c-text-inv);opacity:.85}
+@media(max-width:600px){.hero__stats{grid-template-columns:1fr;gap:var(--sp-5)}.hero__stat+.hero__stat::before{display:none}}
+
+/* ---- Section 2: Why (#why, paper, no header) --------------------------- */
+.why__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-16);align-items:start}
+.why__prose{max-width:68ch}
+.why__prose p{color:var(--c-text-mid);line-height:var(--lh-relaxed);margin-bottom:var(--sp-5)}
+.why__prose p:first-of-type{font-family:var(--ff-heading);font-size:var(--fs-2xl);font-style:italic;color:var(--c-primary-dark);line-height:var(--lh-tight)}
+.why__figure{position:relative;margin:0 0 var(--sp-10)}
+.why__figure img{width:100%;border:6px solid var(--c-surface);outline:1px solid var(--c-border-dark);box-shadow:var(--shadow-lg)}
+.why__figcap{margin-top:var(--sp-3);font-size:var(--fs-sm);color:var(--c-text-light);font-style:italic;text-align:center}
+.why__pullstat{background:var(--c-surface);border:1px solid var(--c-border-dark);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6);box-shadow:var(--shadow-md);max-width:220px}
+.why__pullstat strong{display:block;font-family:var(--ff-heading);font-size:var(--fs-4xl);color:var(--c-accent);line-height:1}
+.why__pullstat span{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--c-text-light)}
+@media(min-width:901px){.why__pullstat{position:absolute;left:var(--sp-8);bottom:calc(-1 * var(--sp-8));margin:0}}
+@media(max-width:900px){.why__grid{grid-template-columns:1fr;gap:var(--sp-10)}}
+
+/* ---- Section 3: Ratings (#ratings, cream, rule head) -------------------- */
+.review-card--top{border:2px solid var(--c-accent);box-shadow:var(--shadow-lg)}
+.review-card__flag{position:absolute;top:-1px;right:var(--sp-6);background:var(--grad-gold);color:var(--c-primary-dark);font-size:var(--fs-xs);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:.06em;padding:var(--sp-1) var(--sp-4);border-radius:0 0 var(--r-sm) var(--r-sm);box-shadow:var(--shadow-sm)}
+.review-card__medal{width:44px;height:44px;border-radius:50%;background:var(--grad-gold);color:var(--c-primary-dark);display:flex;align-items:center;justify-content:center;font-family:var(--ff-heading);font-weight:var(--fw-bold);font-size:var(--fs-lg);flex-shrink:0;box-shadow:var(--shadow-sm);position:relative}
+.review-card__medal::after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid var(--c-white-50)}
+.review-card__score-ring{width:56px;height:56px;border-radius:50%;background:conic-gradient(var(--c-accent) calc(var(--pct,90%)),var(--c-border) 0);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.review-card__score-ring::before{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--c-surface);z-index:0}
+.review-card__score-ring span{position:relative;z-index:1;font-family:var(--ff-heading);font-weight:var(--fw-bold);color:var(--c-primary);font-size:var(--fs-sm)}
+.review-card__pros{list-style:none;margin:0 0 var(--sp-4);display:flex;flex-direction:column;gap:var(--sp-2)}
+.review-card__pros li{position:relative;padding-left:var(--sp-6);font-size:var(--fs-sm);color:var(--c-text-mid);line-height:var(--lh-normal)}
+.review-card__pros li::before{content:"✓";position:absolute;left:0;color:var(--c-accent);font-weight:var(--fw-bold)}
+
+/* ---- Section 4: Compare (#compare, paper, rule head) -------------------- */
+.compare-table thead th{border-bottom:3px solid var(--c-accent)}
+@media(min-width:769px){
+    .compare-table th:first-child,.compare-table td:first-child{position:sticky;left:0;background:var(--c-surface);z-index:1}
+    .compare-table tr:nth-child(even) td:first-child{background:var(--c-surface-alt)}
+}
+.compare__foot{margin-top:var(--sp-8);text-align:center}
+
+/* ---- Section 5: Choose (#choose, cream, split head) --------------------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-10);position:relative}
+.steps::before{content:"";position:absolute;top:36px;left:calc(16.66% + 36px);right:calc(16.66% + 36px);height:2px;background:var(--rule-gold)}
+.step{position:relative}
+.step__num{width:72px;height:72px;border:2px solid var(--c-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-heading);font-size:var(--fs-2xl);font-weight:var(--fw-bold);color:var(--c-accent);background:var(--c-surface);position:relative;z-index:1;margin-bottom:var(--sp-5)}
+.step__title{font-size:var(--fs-lg);margin-bottom:var(--sp-3);color:var(--c-primary-dark)}
+.step__body{color:var(--c-text-mid);line-height:var(--lh-relaxed);margin-bottom:var(--sp-3)}
+.step__body:last-child{margin-bottom:0}
+@media(max-width:900px){
+    .steps{grid-template-columns:1fr;gap:0}
+    .steps::before{top:36px;bottom:36px;left:36px;right:auto;width:2px;height:auto}
+    .step{display:grid;grid-template-columns:72px 1fr;gap:var(--sp-5);padding:var(--sp-6) 0;align-items:start}
+    .step__num{margin-bottom:0}
+}
+
+/* ---- Section 6: Questions (#questions, paper, centered head) ------------ */
+.qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
+.qcard{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-lg);padding:var(--sp-6);display:flex;flex-direction:column;transition:box-shadow var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+.qcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.qcard__title{font-size:var(--fs-lg);color:var(--c-primary-dark);margin-bottom:var(--sp-2)}
+.qcard__intro{font-size:var(--fs-sm);color:var(--c-text-light);margin-bottom:var(--sp-4)}
+.qcard__list{list-style:none;margin-bottom:var(--sp-4)}
+.qcard__list li{position:relative;padding-left:var(--sp-6);font-size:var(--fs-sm);line-height:var(--lh-normal);margin-bottom:var(--sp-2)}
+.qcard__list--good li{color:var(--c-text)}
+.qcard__list--good li::before{content:"✓";position:absolute;left:0;color:var(--c-accent);font-weight:var(--fw-bold)}
+.qcard__list--weak li{color:var(--c-text-light)}
+.qcard__list--weak li::before{content:"/";position:absolute;left:2px;color:var(--c-text-light);font-weight:var(--fw-bold)}
+.qcard__cta{margin-top:auto;font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--c-primary)}
+.qcard__cta:hover{color:var(--c-primary-dark)}
+@media(max-width:900px){.qcards{grid-template-columns:1fr}}
+
+/* ---- Section 7: Types (#types, dark tone, inverted head) --------------- */
+.types{counter-reset:typenum}
+.type{counter-increment:typenum;position:relative;display:grid;grid-template-columns:.55fr 1fr;gap:var(--sp-10);align-items:center;padding:var(--sp-10) 0;border-bottom:1px solid var(--c-gold-line)}
+.types .type:last-child{border-bottom:none;padding-bottom:0}
+.type::before{content:counter(typenum,decimal-leading-zero);font-family:var(--ff-heading);font-style:italic;font-size:clamp(4.5rem,8vw,7rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--c-gold-line);align-self:center}
+.type__content{min-width:0}
+.type--flip{grid-template-columns:1fr .55fr}
+.type--flip::before{order:2}
+.type--flip .type__content{order:1}
+.type__kicker{font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.08em;color:var(--c-accent-light);font-weight:var(--fw-semi);margin-bottom:var(--sp-3)}
+.type__title{font-size:var(--fs-2xl);color:var(--c-text-inv);margin-bottom:var(--sp-4)}
+.type__body{color:var(--c-text-inv);line-height:var(--lh-relaxed);margin-bottom:var(--sp-4);opacity:.92}
+.type__list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2) var(--sp-5);margin-bottom:var(--sp-5)}
+.type__list li{position:relative;padding-left:var(--sp-5);font-size:var(--fs-sm);color:var(--c-text-inv)}
+.type__list li::before{content:"—";position:absolute;left:0;color:var(--c-accent-light)}
+.type__cta{color:var(--c-accent-light);font-weight:var(--fw-semi);font-size:var(--fs-sm);display:inline-block}
+.type__cta:hover{color:var(--c-text-inv)}
+@media(max-width:860px){
+    .type,.type--flip{grid-template-columns:1fr;gap:var(--sp-4)}
+    .type::before,.type--flip::before{font-size:3rem;order:0}
+    .type--flip .type__content{order:0}
+    .type__list{grid-template-columns:1fr}
+}
+
+/* ---- Section 8: Voices (#voices, cream, rule head) ---------------------- */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6)}
+.voice{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-lg);padding:var(--sp-6);position:relative}
+.voice__quote{font-family:var(--ff-heading);font-style:italic;font-size:var(--fs-md);color:var(--c-text-mid);line-height:var(--lh-relaxed);position:relative;padding-left:var(--sp-6);margin-bottom:var(--sp-5)}
+.voice__quote::before{content:"\201C";position:absolute;left:-4px;top:-6px;font-size:2.5rem;color:var(--c-accent);font-style:normal;line-height:1}
+.voice__stars{display:flex;gap:2px;margin-bottom:var(--sp-3)}
+.voice__stars svg{width:14px;height:14px;fill:var(--c-star)}
+.voice__who{font-weight:var(--fw-semi);color:var(--c-primary-dark);font-size:var(--fs-sm)}
+.voice__meta{font-size:var(--fs-xs);color:var(--c-text-light);text-transform:uppercase;letter-spacing:.04em}
+@media(max-width:900px){.voices{grid-template-columns:1fr}}
+
+/* ---- Section 9: Standards (#standards, paper, split head) -------------- */
+.standards__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12)}
+.standard__title{font-size:var(--fs-xl);color:var(--c-primary-dark);margin-bottom:var(--sp-3)}
+.standard__body{color:var(--c-text-mid);line-height:var(--lh-relaxed)}
+.standards__photo{margin:var(--sp-12) 0 0;height:320px;border-radius:var(--r-lg);background-image:var(--img-about);background-size:cover;background-position:center;position:relative;overflow:hidden}
+.standards__photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--c-overlay-1) 0%,transparent 45%)}
+@media(max-width:860px){.standards__grid{grid-template-columns:1fr;gap:var(--sp-6)}.standards__photo{height:220px}}
+
+/* ---- Section 10: Method (#method, dark tone, inverted head) ------------ */
+.tone--dark .process-steps::before{background:var(--c-gold-line)}
+.tone--dark .process-step__num{background:var(--c-scrim-inv);border-color:var(--c-accent);color:var(--c-accent-light)}
+.tone--dark .process-step__title{color:var(--c-text-inv)}
+.tone--dark .process-step__desc{color:var(--c-text-inv);opacity:.85}
+.method__pledge{margin-top:var(--sp-12);border:1px solid var(--c-gold-line);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-8);text-align:center;font-family:var(--ff-heading);font-style:italic;font-size:var(--fs-lg);color:var(--c-text-inv)}
+
+/* ---- Section 11: FAQ (#faq, paper, centered head) ----------------------- */
+.faq__foot{margin-top:var(--sp-8);text-align:center;font-size:var(--fs-md);color:var(--c-text-mid)}
+.faq__foot a{font-weight:var(--fw-semi)}
+
+/* ---- Section 12: Final CTA (image tone) --------------------------------- */
+.cta-banner{position:relative;overflow:hidden;isolation:isolate}
+.cta-banner::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--img-cta);background-size:cover;background-position:center}
+.cta-banner::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,var(--c-overlay-1) 0%,var(--c-overlay-2) 55%,var(--c-overlay-3) 100%)}
+.cta-banner__recap{display:flex;justify-content:center;gap:var(--sp-8);flex-wrap:wrap;margin:var(--sp-8) 0;list-style:none;counter-reset:recap}
+.cta-banner__recap li{counter-increment:recap;display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-sm);color:var(--c-text-inv)}
+.cta-banner__recap li::before{content:counter(recap);width:24px;height:24px;border-radius:50%;border:1px solid var(--c-accent-light);color:var(--c-accent-light);display:flex;align-items:center;justify-content:center;font-family:var(--ff-heading);font-weight:var(--fw-bold);font-size:var(--fs-xs);flex-shrink:0}
+.cta-banner__fineprint{margin-top:var(--sp-6);font-size:var(--fs-xs);color:var(--c-text-inv);opacity:.7}
+
+/* ===== Focus states — homepage components (bug #4). components.css has a
+   generic a/button/.btn catch-all, but these rules make each homepage
+   component's focus ring explicit here, and bump dark/image-background
+   sections to the lighter accent so the ring stays visible. */
+.review-card__link:focus-visible,
+.qcard__cta:focus-visible,
+.compare__foot a:focus-visible,
+.faq__foot a:focus-visible,
+.standards a:focus-visible{
+    outline:2px solid var(--c-accent);
+    outline-offset:2px;
+}
+.type__cta:focus-visible,
+.hero__actions .btn:focus-visible,
+.cta-banner .btn:focus-visible{
+    outline:2px solid var(--c-accent-light);
+    outline-offset:2px;
+}

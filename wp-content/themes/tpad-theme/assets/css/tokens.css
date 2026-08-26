@@ -1,36 +1,150 @@
-/* ===== Design Tokens ===== */
+/* =========================================================================
+   DESIGN TOKENS — Regal Editorial
+   Burgundy + antique gold on warm paper. Single source of truth for every
+   color, type size, space, radius, shadow and motion value used across the
+   theme (components.css, refresh-2026.css, home-2026.css, catalog.css).
+   Every token NAME below is load-bearing: ~190 non-homepage pages reference
+   these by name. Change VALUES freely; do not rename or remove a token.
+   ========================================================================= */
 :root {
-    --c-primary: #B91C1C;
-    --c-primary-dark: #991B1B;
-    --c-primary-light: #DC2626;
-    --c-accent: #D97706;
-    --c-accent-light: #F59E0B;
-    --c-bg: #FFFBEB;
-    --c-surface: #FFFFFF;
-    --c-surface-alt: #FEF3C7;
-    --c-text: #1C1917;
-    --c-text-light: #78716C;
-    --c-text-inv: #FFFFFF;
-    --c-border: #E7E5E4;
-    --c-border-dark: #D6D3D1;
-    --c-star: #F59E0B;
-    --c-footer-bg: #1C1917;
-    --c-footer-text: #A8A29E;
+    /* ---- Core palette ---------------------------------------------- */
+    --c-primary:        #8B1E1E;  /* burgundy */
+    --c-primary-dark:   #5E0F0F;  /* burgundy, deep */
+    --c-primary-light:  #B91C1C;  /* burgundy, bright */
+    --c-accent:         #C8941B;  /* antique gold */
+    --c-accent-light:   #E5B445;  /* gold, lightened for AA on dark */
+    --c-bg:             #FBF8F0;  /* warm paper */
+    --c-bg-2:           #F2ECD9;  /* cream (NEW) */
+    --c-surface:        #FFFFFF;
+    --c-surface-alt:    #FCF9EF;
+    --c-surface-inv:    #4A0D0D;  /* (NEW) dark-section surface */
+    --c-text:           #1F1410;
+    --c-text-mid:       #4B3A30;  /* (NEW) */
+    --c-text-light:     #6E5B4E;  /* darkened from the old taupe so it clears
+                                      4.5:1 on both --c-surface and --c-bg-2 */
+    --c-text-inv:       #FFF7E0;  /* cream-white for dark/image sections */
+    --c-border:         rgba(139,30,30,.15);
+    --c-border-dark:    rgba(139,30,30,.32);
+    --c-star:           #C8941B;
+    --c-footer-bg:      #5E0F0F;
+    --c-footer-text:    rgba(250,246,234,.78);
+    --grad-burgundy:    linear-gradient(135deg,#5E0F0F 0%,#8B1E1E 45%,#B91C1C 100%);
+    --grad-gold:        linear-gradient(135deg,#E5B445 0%,#C8941B 100%);
+    --rule-gold:        1px solid rgba(200,148,27,.5); /* (NEW) hairline for section rules */
+
+    /* ---- Derived / utility colors (NEW — keeps every literal here) --- */
+    --c-primary-tint:   rgba(139,30,30,.07);  /* nav hover, subtle wash */
+    --c-primary-tint-2: rgba(139,30,30,.14);  /* icon chips, stronger wash */
+    --c-gold-tint:       rgba(200,148,27,.12); /* eyebrow chip bg, light tones */
+    --c-gold-line:       rgba(200,148,27,.24); /* dark-tone borders, 24% alpha */
+    --c-gold-glow:        rgba(200,148,27,.25); /* radial highlight on hero/cta */
+    --c-scrim-inv:        rgba(74,13,13,.55);   /* solid-ish chip backing on dark/image
+                                                    tones — guarantees AA for gold text
+                                                    regardless of gradient position */
+    --c-overlay-1:        rgba(31,20,16,.5);    /* image-overlay top stop */
+    --c-overlay-2:        rgba(94,15,15,.62);   /* image-overlay mid stop */
+    --c-overlay-3:        rgba(31,20,16,.8);    /* image-overlay bottom stop (darkest) */
+    --c-white-8:          rgba(255,255,255,.08);
+    --c-white-12:         rgba(255,255,255,.12);
+    --c-white-40:         rgba(255,255,255,.4);
+    --c-white-50:         rgba(255,255,255,.5);
+    --c-white-70:         rgba(255,255,255,.7);
+    --c-header-glass:     rgba(251,248,240,.92); /* paper, translucent for backdrop-blur */
+
+    /* ---- Theme image assets (NEW — single source, no per-file dupes) - */
+    --img-hero:  url("../images/refresh-hero-bg.webp");
+    --img-cta:   url("../images/refresh-cta-bg.webp");
+    --img-about: url("../images/refresh-advisor-office.webp");
+
+    /* ---- Type -------------------------------------------------------- */
     --ff-heading: 'Cormorant Garamond', Georgia, serif;
     --ff-body: 'Open Sans', system-ui, sans-serif;
     --fw-normal: 400; --fw-medium: 500; --fw-semi: 600; --fw-bold: 700;
-    --fs-xs:.75rem;--fs-sm:.875rem;--fs-base:1rem;--fs-md:1.125rem;
-    --fs-lg:1.25rem;--fs-xl:1.5rem;--fs-2xl:1.875rem;--fs-3xl:2.25rem;
-    --fs-4xl:3rem;--fs-5xl:3.75rem;
-    --lh-tight:1.2;--lh-normal:1.6;--lh-relaxed:1.8;
-    --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
-    --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-16:64px;--sp-20:80px;--sp-24:96px;
-    --max-w:1200px;--max-w-narrow:800px;--gutter:24px;
-    --r-sm:4px;--r-md:8px;--r-lg:12px;--r-xl:16px;--r-full:9999px;
-    --shadow-xs:0 1px 2px rgba(0,0,0,.05);
-    --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
-    --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.04);
-    --shadow-lg:0 10px 15px rgba(0,0,0,.08),0 4px 6px rgba(0,0,0,.04);
-    --shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04);
-    --ease:cubic-bezier(.4,0,.2,1);--dur:200ms;--dur-slow:350ms;
+
+    /* fixed sizes below the point where fluid scaling matters */
+    --fs-xs: .75rem; --fs-sm: .875rem; --fs-base: 1rem; --fs-md: 1.125rem;
+    --fs-lg: 1.25rem;
+
+    /* fluid clamp() ramp — replaces the old fixed 3xl/4xl/5xl values so the
+       768px breakpoint no longer needs to redefine them */
+    --fs-xl:  clamp(1.25rem, 1.19rem + .3vw,  1.5rem);
+    --fs-2xl: clamp(1.5rem,  1.36rem + .7vw,  1.875rem);
+    --fs-3xl: clamp(1.75rem, 1.48rem + 1.3vw, 2.25rem);
+    --fs-4xl: clamp(2.25rem, 1.86rem + 1.9vw, 3rem);
+    --fs-5xl: clamp(2.75rem, 2.05rem + 3.5vw, 3.75rem);
+
+    --lh-tight: 1.2; --lh-normal: 1.6; --lh-relaxed: 1.8;
+
+    /* ---- Space --------------------------------------------------------*/
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px; --sp-6: 24px;
+    --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+    --max-w: 1200px; --max-w-narrow: 800px; --gutter: 24px;
+    --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-full: 9999px;
+
+    /* ---- Elevation & motion -------------------------------------------*/
+    --shadow-xs: 0 1px 2px rgba(31,20,16,.06);
+    --shadow-sm: 0 1px 3px rgba(31,20,16,.1),0 1px 2px rgba(31,20,16,.05);
+    --shadow-md: 0 4px 10px rgba(31,20,16,.08),0 2px 4px rgba(31,20,16,.05);
+    --shadow-lg: 0 10px 24px rgba(94,15,15,.16),0 4px 8px rgba(31,20,16,.06);
+    --shadow-xl: 0 22px 44px rgba(94,15,15,.2),0 10px 18px rgba(31,20,16,.07);
+    --ease: cubic-bezier(.4,0,.2,1);
+    --dur: 220ms;
+    --dur-slow: 340ms;
+}
+
+/* =========================================================================
+   Dark mode — OS-level preference. Re-points paper/surface/text tokens to
+   a deep brown-black equivalent; burgundy/gold accents are untouched (they
+   already read correctly on a darker canvas) and every other rule in the
+   theme inherits automatically because it only ever references tokens.
+   ========================================================================= */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --c-bg:          #1B1210;
+        --c-bg-2:        #241713;
+        --c-surface:     #271815;
+        --c-surface-alt: #2E1C17;
+        --c-text:        #F3E9DD;
+        --c-text-mid:    #D9C8B8;
+        --c-text-light:  #B9A794;
+        --c-border:       rgba(232,183,90,.16);
+        --c-border-dark:  rgba(232,183,90,.3);
+        --c-primary-tint:   rgba(232,183,90,.08);
+        --c-primary-tint-2: rgba(232,183,90,.16);
+        --shadow-xs: 0 1px 2px rgba(0,0,0,.35);
+        --shadow-sm: 0 1px 3px rgba(0,0,0,.4),0 1px 2px rgba(0,0,0,.2);
+        --shadow-md: 0 4px 10px rgba(0,0,0,.38),0 2px 4px rgba(0,0,0,.2);
+        --shadow-lg: 0 10px 24px rgba(0,0,0,.45),0 4px 8px rgba(0,0,0,.22);
+        --shadow-xl: 0 22px 44px rgba(0,0,0,.5),0 10px 18px rgba(0,0,0,.26);
+    }
+}
+
+/* =========================================================================
+   Reduced motion — neutralize transforms/transitions/animations network-wide.
+   Every hover-lift and accordion transition in components.css, refresh-2026.css
+   and home-2026.css is driven by var(--dur)/var(--dur-slow) transitions or a
+   transform on :hover/.open, so collapsing durations to ~0 and pinning the
+   known lift transforms to none covers all of them in one place.
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .review-card:hover,
+    .btn:hover,
+    .site-header.scrolled,
+    .process-step,
+    .why__figure:hover,
+    .step:hover,
+    .qcard:hover,
+    .type:hover,
+    .voice:hover,
+    .review-card__medal,
+    .review-card__score-ring,
+    .faq-item__icon {
+        transform: none !important;
+    }
 }
