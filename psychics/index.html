@@ -91,6 +91,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <meta name="description" content="Browse published psychic advisor profiles, compare specialties, ratings, prices, and source details before choosing a reader." />
 <meta property="og:description" content="Browse published psychic advisor profiles, compare specialties, ratings, prices, and source details before choosing a reader." />
 <meta property="og:image" content="https://trusted-psychic-advisors.com/wp-content/uploads/2026/03/trusted-psychic-advisorscom-logo.png" />
+<link rel="stylesheet" href="/assets/advisor-compare.css">
 </head>
 
 <body class="archive post-type-archive post-type-archive-psychic wp-theme-tpad-theme">
@@ -275,6 +276,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- Main Grid -->
 
 <div class="catalog-main">
+
+<section class="advisor-compare" id="advisor-compare" data-index-url="/wp-content/uploads/catalog/index.json" aria-labelledby="advisor-compare-title">
+    <div class="advisor-compare__intro">
+        <div>
+            <p class="tpa-eyebrow tpa-eyebrow--accent">Decision tool</p>
+            <h2 id="advisor-compare-title">Compare psychic advisors</h2>
+            <p>Choose two or three published profiles. Compare their listed rates, specialties, and review counts before visiting the source.</p>
+        </div>
+    </div>
+    <label for="advisor-compare-search">Find an advisor by name</label>
+    <input id="advisor-compare-search" type="search" autocomplete="off" placeholder="Start typing a name" aria-controls="advisor-compare-results" aria-expanded="false">
+    <div id="advisor-compare-results" class="advisor-compare__results" role="listbox" hidden></div>
+    <p id="advisor-compare-status" class="advisor-compare__status" role="status" aria-live="polite">Select two profiles to compare.</p>
+    <div id="advisor-compare-selected" class="advisor-compare__selected" aria-live="polite"></div>
+    <div id="advisor-compare-table" class="advisor-compare__table-wrap" hidden></div>
+    <div class="advisor-compare__budget">
+        <label for="advisor-compare-budget">Your session budget (USD)</label>
+        <input id="advisor-compare-budget" type="number" min="1" max="10000" step="1" value="30" inputmode="decimal">
+        <p>Estimated minutes = budget ÷ listed rate per minute. Promotions, taxes, fees, and minimum charges are excluded. Confirm the current rate and offer on the source profile before paying.</p>
+    </div>
+</section>
+
 
 <div class="catalog-topbar">
 
@@ -1210,6 +1233,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
 //# sourceURL=https://trusted-psychic-advisors.com/wp-includes/js/wp-emoji-loader.min.js
 </script>
+<script src="/assets/advisor-compare.js" defer></script>
 </body>
 
 </html>

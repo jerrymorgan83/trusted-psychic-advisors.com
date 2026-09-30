@@ -1,0 +1,32 @@
+.advisor-compare {
+    position: relative;
+    margin: 0 0 36px;
+    padding: clamp(22px, 4vw, 38px);
+    border: 1px solid #d8e2dc;
+    border-radius: 18px;
+    background: #f7faf7;
+}
+
+.advisor-compare h2 { margin: 6px 0 10px; font-size: clamp(25px, 3vw, 34px); }
+.advisor-compare p { max-width: 68ch; }
+.advisor-compare label { display: block; margin: 18px 0 8px; font-weight: 700; }
+.advisor-compare input { width: 100%; max-width: 460px; padding: 12px 14px; border: 1px solid #9eaea5; border-radius: 8px; background: #fff; color: #172923; font: inherit; }
+.advisor-compare input:focus-visible, .advisor-compare button:focus-visible, .advisor-compare a:focus-visible { outline: 3px solid #2f6f62; outline-offset: 2px; }
+.advisor-compare__results { position: absolute; z-index: 5; width: min(460px, calc(100% - 44px)); max-height: 280px; overflow-y: auto; padding: 6px; border: 1px solid #9eaea5; border-radius: 8px; background: #fff; box-shadow: 0 8px 24px #17292320; }
+.advisor-compare__result { display: block; width: 100%; padding: 10px; border: 0; border-radius: 5px; background: transparent; color: #172923; text-align: left; font: inherit; cursor: pointer; }
+.advisor-compare__result:hover, .advisor-compare__result:focus-visible { background: #e7f1ec; }
+.advisor-compare__status { margin: 12px 0; color: #42564d; }
+.advisor-compare__selected { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.advisor-compare__chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: #e2eee7; }
+.advisor-compare__chip button { border: 0; background: transparent; color: #172923; font-size: 20px; line-height: 1; cursor: pointer; }
+.advisor-compare__table-wrap { max-width: 100%; overflow-x: auto; margin-top: 22px; }
+.advisor-compare__table { width: 100%; min-width: 560px; border-collapse: collapse; background: #fff; }
+.advisor-compare__table caption { text-align: left; font-weight: 700; margin-bottom: 8px; }
+.advisor-compare__table th, .advisor-compare__table td { padding: 12px; border: 1px solid #d8e2dc; text-align: left; vertical-align: top; }
+.advisor-compare__table thead th { background: #e7f1ec; }
+.advisor-compare__table tbody th { width: 170px; font-weight: 600; }
+.advisor-compare__table a { color: #236254; text-decoration: underline; }
+.advisor-compare__budget { margin-top: 24px; padding-top: 8px; border-top: 1px solid #d8e2dc; }
+.advisor-compare__budget input { max-width: 160px; }
+.advisor-compare__budget p { margin: 12px 0 0; font-size: 14px; color: #42564d; }
+@media (max-width: 600px) { .advisor-compare { padding: 20px; } }
