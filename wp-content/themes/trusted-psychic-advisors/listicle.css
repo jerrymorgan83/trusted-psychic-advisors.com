@@ -4,3 +4,20 @@
 
 /* Статті зі збереженого WordPress-контенту. */
 .lc-legacy-prose{max-width:880px;font-size:17px;line-height:1.85}.lc-legacy-prose h2{font-size:32px;line-height:1.25;margin:35px 0 18px}.lc-legacy-prose h3{font-size:25px;margin:25px 0 12px}.lc-legacy-prose a{text-decoration:underline;color:var(--accent)}.lc-legacy-prose img{max-width:100%;height:auto}.lc-legacy-prose table{display:block;overflow:auto;max-width:100%;border-collapse:collapse}.lc-legacy-prose td,.lc-legacy-prose th{padding:12px;border:1px solid var(--line)}.lc-legacy-prose blockquote{border-left:3px solid var(--accent);margin:25px 0;padding:10px 25px;background:var(--soft)}
+
+/* Публічні профілі AskNebula та прозорі партнерські переходи. */
+.lc-nebula{border-top:1px solid var(--line)}
+.lc-nebula-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:28px}
+.lc-nebula-card{display:grid;grid-template-columns:62px 1fr;align-content:start;gap:10px 20px;padding:26px;border:1px solid var(--line);border-radius:9px;background:var(--soft)}
+.lc-nebula-monogram{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:var(--accent);color:white;font:30px var(--display)}
+.lc-nebula-card .lc-kicker{margin:0 0 4px}
+.lc-nebula-card h3{font-size:29px;margin-bottom:9px}
+.lc-nebula-card p{color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 12px}
+.lc-nebula-card .lc-nebula-focus{color:var(--ink);font-weight:700}
+.lc-nebula-card .lc-nebula-methods{font-size:12px;margin-bottom:0}
+.lc-nebula-card .lc-button{grid-column:2;justify-self:start;margin-top:8px}
+.lc-nebula-note,.tpa-partner-note{color:var(--muted);font-size:13px;line-height:1.7}
+.lc-nebula-note{margin-top:22px!important;max-width:850px}
+.tpa-partner-note{padding:14px 18px;border-left:3px solid var(--accent);background:var(--soft)}
+.lc-article-body .tpa-partner-cta{color:white;text-decoration:none;vertical-align:middle;margin:.2rem 0}
+@media(max-width:760px){.lc-nebula-grid{grid-template-columns:1fr}.lc-nebula-card{grid-template-columns:48px 1fr;padding:20px;gap:8px 14px}.lc-nebula-monogram{width:48px;height:48px;font-size:24px}.lc-nebula-card .lc-button{grid-column:1/-1;justify-self:stretch}.lc-nebula-card h3{font-size:25px}}

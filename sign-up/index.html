@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Choose your next step | Trusted Psychic Advisors</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, Segoe UI, sans-serif; color: #302b33; background: #fcf9f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header { padding: 1.2rem max(1.2rem, calc((100vw - 1100px)/2)); border-bottom: 1px solid #eadfe4; }
+    header a { color: #302b33; text-decoration: none; font-weight: 700; }
+    main { max-width: 730px; margin: 7vh auto; padding: 1.2rem; }
+    .eyebrow { color: #8b4868; font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { font-family: Georgia, serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; margin: .7rem 0 1rem; }
+    .intro { font-size: 1.15rem; line-height: 1.65; max-width: 62ch; }
+    .quiz { margin: 2.5rem 0; padding: 1.5rem; border: 1px solid #e6d6de; border-radius: 18px; background: #fff; }
+    h2 { font-size: 1.2rem; margin: 0 0 1rem; }
+    .choices { display: flex; flex-wrap: wrap; gap: .7rem; }
+    .choice { background: #fcf9f7; border: 1px solid #b48aa0; border-radius: 999px; color: #302b33; cursor: pointer; font: inherit; padding: .8rem 1.2rem; }
+    .choice[aria-pressed="true"] { background: #713654; color: #fff; border-color: #713654; }
+    .next { margin: 1.5rem 0 0; line-height: 1.6; }
+    .cta { display: inline-block; margin-top: 1.1rem; padding: .95rem 1.4rem; border-radius: 8px; background: #713654; color: #fff; font-weight: 700; text-decoration: none; }
+    .cta:hover, .cta:focus-visible { background: #53253d; }
+    .disclosure { color: #584e56; line-height: 1.6; font-size: .95rem; }
+    @media (max-width: 600px) { main { margin-top: 3rem; } .choice { flex: 1 1 100%; text-align: left; } }
+  </style>
+</head>
+<body>
+<header><a href="/">â³ Trusted Psychic Advisors</a></header>
+<main>
+  <span class="eyebrow">A thoughtful next step</span>
+  <h1>What would you like to explore?</h1>
+  <p class="intro">Choose a topic before you continue. This short check stays in your browser; we do not ask for contact details.</p>
+  <section class="quiz" aria-labelledby="quiz-title">
+    <h2 id="quiz-title">Your question is mainly aboutâ¦</h2>
+    <div class="choices" role="group" aria-label="Choose a reading topic">
+      <button class="choice" type="button" aria-pressed="false" data-topic="relationships">Relationships</button>
+      <button class="choice" type="button" aria-pressed="false" data-topic="life">Life direction</button>
+      <button class="choice" type="button" aria-pressed="false" data-topic="career">Career or work</button>
+    </div>
+    <p class="next" id="next-step" aria-live="polite">Pick one topic. Then check AskNebulaâs current readers and terms.</p>
+    <a class="cta" href="https://asknebula.com/flow/lp/simple-simple-registration/quiz/gender?utm_source=aff&amp;utm_medium=google&amp;utm_campaign=google_net__trusted-psychic-advisors.com" rel="sponsored nofollow noopener">Continue to AskNebula â</a>
+  </section>
+  <p class="disclosure">AskNebula is a separate partner service. Reader profiles and platform reviews on this site describe other providers and do not promise that the same readers are available at AskNebula. We may earn a commission if you continue. Check prices, availability and terms there before paying.</p>
+  <p><a href="/">Return to the guide</a></p>
+</main>
+<script>
+  const messages = {
+    relationships: 'You can explore relationship readings. Keep your own judgment at the centre.',
+    life: 'You can explore life direction readings. No reading can guarantee an outcome.',
+    career: 'You can explore career readings. Use qualified advice for major financial decisions.'
+  };
+  document.querySelectorAll('.choice').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.choice').forEach((choice) => choice.setAttribute('aria-pressed', 'false'));
+      button.setAttribute('aria-pressed', 'true');
+      document.getElementById('next-step').textContent = messages[button.dataset.topic];
+    });
+  });
+</script>
+</body>
+</html>
