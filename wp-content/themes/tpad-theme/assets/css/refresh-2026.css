@@ -1,0 +1,64 @@
+/* =========================================================================
+   REFRESH 2026 — network-wide regal-editorial polish layer.
+   Loads AFTER tokens.css + components.css (enqueued at priority 99), so it
+   wins the cascade on equal specificity without needing !important. Its job
+   is additive only: everything tokens.css/components.css already produce on
+   their own has been removed from here (see the CSS-pass report for the
+   deletion list). What remains are real, verified selectors that exist in
+   this theme's templates, tokenized instead of hardcoded.
+   ========================================================================= */
+
+h5,h6{font-family:var(--ff-heading);font-weight:var(--fw-bold)}
+h1,h2,h3,h4,h5,h6{color:var(--c-primary-dark);letter-spacing:-.005em}
+h1{font-size:var(--fs-5xl);line-height:1.05}
+h2{font-weight:var(--fw-semi)}
+h3{font-weight:var(--fw-semi)}
+a:hover{color:var(--c-accent)}
+p{color:var(--c-text-mid);line-height:var(--lh-relaxed)}
+
+/* Eyebrow chip — the theme's real class is .sec__eyebrow (already styled in
+   components.css); this adds the bordered "certificate" treatment on top. */
+.sec__eyebrow{
+  background:var(--c-gold-tint);
+  padding:6px 14px;
+  border-top:1px solid var(--c-accent);
+  border-bottom:1px solid var(--c-accent);
+}
+
+/* Buttons — additive shape/weight; .btn already carries color per variant
+   from components.css. input[type=submit] covers the WP comment form. */
+.btn,input[type=submit]{
+  border-radius:2px;
+  font-weight:var(--fw-semi);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.btn--primary,input[type=submit]{
+  box-shadow:var(--shadow-lg);
+}
+.btn--primary:hover{box-shadow:var(--shadow-xl)}
+
+/* Review cards — gold top-accent bar + italic serif title. The old rule
+   here targeted a bare `.card` class that matches nothing in this theme
+   (the real component is `.review-card`); fixed by targeting it directly
+   instead of the dead selector. */
+.review-card{position:relative}
+.review-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-gold);border-radius:var(--r-lg) var(--r-lg) 0 0}
+.review-card__name{color:var(--c-primary-dark);font-style:italic}
+
+/* Site chrome — frosted header, gold-bottomed footer, uppercase nav */
+.site-header{background:var(--c-header-glass);backdrop-filter:saturate(1.3) blur(16px);border-bottom:2px solid var(--c-primary)}
+.site-nav a{letter-spacing:.04em;text-transform:uppercase;font-size:.88rem}
+.site-footer{border-top:3px solid var(--c-accent)}
+.site-footer h4{color:var(--c-accent-light)}
+.footer-col a:hover{color:var(--c-accent-light)}
+
+/* CTA banner — gold frame; the image-and-overlay layer for the homepage
+   final banner lives in home-2026.css (section 12 owns that treatment). */
+.cta-banner{border:1px solid var(--c-accent);border-radius:4px}
+
+/* Rating badges (tpad_rating_badge()) print `rating-badge badge--gold|silver|bronze`.
+   Gold accenting for the top tier; silver/bronze keep their own ink color. */
+.badge--gold{color:var(--c-accent)}
+
+blockquote{border-left:2px solid var(--c-accent);color:var(--c-primary-dark);background:var(--c-gold-tint);padding:16px 24px;font-family:var(--ff-heading);font-style:italic;font-size:1.2rem}
