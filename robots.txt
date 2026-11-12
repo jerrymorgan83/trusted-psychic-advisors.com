@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /go/
+Disallow: /sign-up/
+Sitemap: https://trusted-psychic-advisors.com/sitemap.xml

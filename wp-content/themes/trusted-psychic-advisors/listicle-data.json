@@ -1,0 +1,41 @@
+{
+  "name": "trusted-psychic-advisorscom",
+  "theme": "trusted-psychic-advisors",
+  "brand": "Trusted Psychic Advisors",
+  "domain": "trusted-psychic-advisors.com",
+  "palette": "berry",
+  "eyebrow": "THOUGHTFUL GUIDANCE STARTS HERE",
+  "title": "A little perspective. A more considered choice.",
+  "intro": "Reader shortlists and practical relationship guides to help you slow down, compare your options and choose your next step with care.",
+  "section": "9 advisors with different ways of listening",
+  "standfirst": "Some people want a direct conversation; others prefer a gentle space to reflect. Start with the approach you would feel comfortable with, and keep your own judgment at the centre.",
+  "ids": [
+    36,
+    38,
+    41,
+    44,
+    47,
+    50,
+    54,
+    56,
+    59
+  ],
+  "topics": [
+    [
+      "relationship-advisor-shortlist",
+      "6 advisors for relationship reflection",
+      "Love & relationships"
+    ],
+    [
+      "life-direction-shortlist",
+      "4 advisors for a change of direction",
+      "Destiny & life path"
+    ],
+    [
+      "career-advisor-shortlist",
+      "6 advisors for work & career reflection",
+      "Career & work"
+    ]
+  ],
+  "id": 49
+}
